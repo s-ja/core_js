@@ -43,3 +43,10 @@ window.a
 ```
 
 - 가비지 콜렉터(?)
+
+### 맥 윈키리스 키보드 사용시 node.js 종료 방법
+- 윈키리스 키보드에서 컨트롤 키에 커맨드(윈도우)키를 매핑한 경우 터미널에서 node.js를 종료하는 방법.
+1. killall node = 실행중인 모든 노드 프로세스를 종료한다.
+2. ```lsof -i tcp:****``` + ```kill -9 PID번호``` = ****에 현재 사용중인 포트 번호를 기입, 현재 사용중인 포트번호의 PID번호를 확인 + kill -9 뒤에 입력하여 해당 프로세스를 종료할 수 있음.
+[참고1](https://yceffort.kr/2021/07/kill-a-nodejs-process)
+[참고2](https://www.inflearn.com/questions/183092/npm-run-serve-%EC%A2%85%EB%A3%8C%EB%B2%95)
