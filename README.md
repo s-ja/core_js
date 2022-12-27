@@ -50,3 +50,9 @@ window.a
 2. ```lsof -i tcp:****``` + ```kill -9 PID번호``` = ****에 현재 사용중인 포트 번호를 기입, 현재 사용중인 포트번호의 PID번호를 확인 + kill -9 뒤에 입력하여 해당 프로세스를 종료할 수 있음.
 [참고1](https://yceffort.kr/2021/07/kill-a-nodejs-process)
 [참고2](https://www.inflearn.com/questions/183092/npm-run-serve-%EC%A2%85%EB%A3%8C%EB%B2%95)
+
+### 수업 시간 작업 내용중 기억 안나는 부분
+![캡처](./images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-12-27%20%EC%98%A4%ED%9B%84%2011.22.07.png)
+- cmd + p -> settingGUI 진입후 association 검색, Files:Association 에 새로운 값으로 설정
+- js애서 리액트 코드를 자유롭게 사용할 수 있게끔 하는 설정, 혹은 주석 관련 확장 프로그램 오류로 인해 설정한 것으로 기억(예상)
+- 이후 확인 필요
