@@ -8,7 +8,11 @@
 
 - [x] Code Structure [코드 구조](https://ko.javascript.info/structure)
 - [x] Variable [변수와 상수](https://ko.javascript.info/variables)
-- [ ] Strict Mode [엄격 모드](https://ko.javascript.info/strict-mode)
+- [x] Strict Mode [엄격 모드](https://ko.javascript.info/strict-mode)
+- [x] Global This
+- [x] Data Type
+- [ ] 
+- [ ] 
 
 ---
 

@@ -91,4 +91,4 @@ const RESOLVED = 'api/resolved';
 const REJECTED = 'api/rejected';
 
 var nickName = 'sam';
-let nickName = 'john' //temporal dead zone (임시 사망 지역?)
+// let nickName = 'john' //temporal dead zone (임시 사망 지역?)
