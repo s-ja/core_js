@@ -6,7 +6,7 @@
 [JavaScript Core Branch](https://github.com/s-ja/core_js)
 [JavaScript Core ](https://productive-printer-b81.notion.site/JavaScript-0d9b4ab4adea4c7980f41a2aa68f4424)
 
-- [ ] Code Structure [코드 구조](https://ko.javascript.info/structure)
+- [x] Code Structure [코드 구조](https://ko.javascript.info/structure)
 - [ ] Variable [변수와 상수](https://ko.javascript.info/variables)
 - [ ] Strict Mode [엄격 모드](https://ko.javascript.info/strict-mode)
 
