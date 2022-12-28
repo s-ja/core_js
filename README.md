@@ -11,8 +11,8 @@
 - [x] Strict Mode [엄격 모드](https://ko.javascript.info/strict-mode)
 - [x] Global This
 - [x] Data Type
-- [ ] 
-- [ ] 
+- [x] Type Conversion
+- [ ] operation
 
 ---
 

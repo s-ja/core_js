@@ -33,6 +33,9 @@ console.log(123456n + 78910n);
 // 6. 참(true, yes) 또는 거짓(false, no)
 console.log('typeof true', typeof true);
 console.log('typeof false', typeof false);
+
+console.log('typeof 4>1',typeof 4>1, 'false');
+console.log('typeof (4>1)',typeof (4>1), 'boolean');
 // 7. 데이터 컬렉션(collection) 또는 복잡한 엔티티(entity)
 console.log(typeof {});
 // 8. 고유한 식별자(unique identifier)
@@ -51,15 +54,60 @@ const func = function() {
 
 // 언어 상, 오류
 
+// !json = JavaScript Object Notation (데이터 구조에 대한 필요성)
 
 
+// Object 객체 -> key + value
+//* 객체 리터럴
+const user = new Object()
+user.name = 'seungji'
+user.age = 28
 
-// Object
+const user_ = {
+    name: 'seungji',
+    age: 28,
+    tiger: function(){
+        return '친절한'
+    },
+}
 
-// Array
+console.log(user, user.name, user.age);
+console.log(user_, user_.name, user_.age);
 
-// function
+// Array 배열
+//* 배열 리터럴
+let list = new Array()
+// *collection을 모아둘 때 -> key와 value 없이 value 만 있음, 순서대로 인덱싱
+let list_ = [11,22,33,44,55,66,77,88]
+console.log(list_);
+console.log('list_[Nth]', list_[0], list_[3], 'list_.length' , list_.length);
 
+// function 함수
+
+function sum(){
+    let plus = 1+2
+    return plus
+}
+
+function sum_(){
+    return 3+4
+}
+
+console.log('function sum', sum());
+console.log('function sum_', sum_());
+
+function sum__(a,b){
+    return a + b
+}
+
+console.log('sum__ with 100,200', sum__(100,200));
+
+function carpBread(data){
+    return `${data} 맛 붕어빵입니다.`
+}
+console.log(carpBread('팥'));
+console.log(carpBread('크림'));
+console.log(carpBread('민트'));
 // this
 
 
