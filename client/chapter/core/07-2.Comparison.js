@@ -40,3 +40,18 @@ let same;
 
 console.log('Design' <= 'Development');
 console.log('디자인' <= '개발');
+
+
+///! trial
+console.log( undefined > 0 ); // false (1)
+console.log( undefined < 0 ); // false (2)
+console.log( undefined == 0 ); // false (3)
+console.log( undefined === 0 ); // false (3)
+
+// 5 > 4 -> true
+// "apple" > "pineapple" - >false
+// "2" > "12" -> true
+// undefined == null -> true
+// undefined === null -> false
+// null == "\n0\n" -> false
+// null === +"\n0\n" -> false
