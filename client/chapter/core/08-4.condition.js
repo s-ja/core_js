@@ -27,3 +27,31 @@ receivedEmailAddress = emailAddress || 'user@company.io';
 
 // || → 첫번째 Truthy 값을 반환
 // ?? → 첫번째 정의된(defined) 값을 반환
+
+const WIDTH = '10px'
+const INIT = 0;
+const boolean = false;
+const button = document.querySelector(".button");
+
+if (button) {
+  button.style.height = `${INIT ?? parseInt(WIDTH)}px`;
+}
+
+// button.style.height = INIT || parseInt(WIDTH)
+// button.style.height = INIT ?? parseInt(WIDTH)
+
+console.log(null || WIDTH);
+console.log(null ?? WIDTH);
+
+console.log(undefined || WIDTH);
+console.log(undefined ?? WIDTH);
+
+// console.log(  || boolean);
+// console.log(  ?? boolean);
+
+console.log(true || WIDTH);
+console.log(true ?? WIDTH);
+console.log(false || WIDTH);
+console.log(false ?? WIDTH);
+console.log( '' || WIDTH);
+console.log( '' ?? WIDTH);
