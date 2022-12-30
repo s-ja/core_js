@@ -56,6 +56,7 @@ while( g >= 0){
 let copyArray = [...frontEndDev];
 let copyArray_ = [frontEndDev];
 let copyArray__ = frontEndDev.slice();
+//! slice(),map() 원본을 파괴시키지 않음
 
 while(frontEndDev.length){
     // console.log(frontEndDev.pop()); //! pop:뒤에서부터

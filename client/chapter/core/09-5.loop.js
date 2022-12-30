@@ -2,14 +2,40 @@
 /* For Of Loop                                                            */
 /* ---------------------------------------------------------------------- */
 
-// js에는 순환이 되는 것이 있고 안되는 것이 있음.
-// 순환할 수 있는 Array, String, Array-like = iterable
 
-const fakeArrayLike = {
-    0 : 'body',
-}
+// String, Array, Array-like  =  iterable
 
-const languages = [
+
+const arrayLike = {
+    0: 'body',
+    1: 'head',
+    2: 'div',
+    length: 3,
+     // [Symbol.iterator](){...}
+  }
+  
+  // for(let value of arrayLike){
+    // console.log(value);
+  // }
+  
+  
+  let str = '유사배열';
+  
+  
+  
+  // console.log(str);
+  
+  for(let value of str){
+    console.log(value);
+  }
+  
+  
+  
+  
+  
+  
+  
+  const languages = [
     {
       id: 'ecma-262',
       name: 'JavaScript',
@@ -37,8 +63,33 @@ const languages = [
   ];
   
   
+  
   // for ~ of 문
   // - 특정 조건에서 건너띄기
+  
+  for(let value of languages){
+    // console.table(value.name);
+    
+    if(value.name === 'Java') continue;
+  
+    // console.table(value);
+    
+  }
+  
+  
+  
+  for(let value of languages){
+    // console.table(value.name);
+    
+    let name = value.name;
+    if(name.includes('C#')) break;
+  
+    console.table(value);
+    
+  }
+  
+  
+  
   // - 특정 조건에서 중단하기
   
   
@@ -83,10 +134,23 @@ const languages = [
   // - for ~ in 문
   // - for ~ of 문
   // - 성능 비교 진단
-
-  for(let value of languages){
-    //console.table(value.name);
   
-    if(value.name === 'C#') break;
-    console.table(value);
-  }
+  /* 
+  
+    Object.entries
+    Object.keys
+    Object.values
+  
+   */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
