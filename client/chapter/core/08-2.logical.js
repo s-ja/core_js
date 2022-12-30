@@ -55,15 +55,17 @@ let userName = prompt('userName','userName') ;
 // console.log(userName);
 let pw ;
 
-// if (userName === 'Admin' && pw===123 ){
+// if (userName === 'Admin' && pw===theMaster ){
 //     alert('welcome')
-// }else if(userName ==='Admin' || pw===123){
+// }else if(userName ==='Admin' || pw===theMaster){
 //     alert('check pw')
 // }else{alert('get out')}
 
-if(userName === 'Admin'){
+// if(userName === 'Admin'){
+if(userName?.toLowerCase() === 'admin'){
     let pw = prompt('password','password');
-    if(pw === '123'){
+    if(pw?.toLowerCase() === 'theMaster'){
+        // ?--> optional chaining : null 값이 들어가면 실행 자체를 안함, 없을시 .tolowercase 때문에 에러 발생
         console.log('welcome');
     }else if(pw === '' || pw === null){
         console.log('cancled');
@@ -71,10 +73,12 @@ if(userName === 'Admin'){
         console.log('get out');
     }
     // console.log('checked');
-}else if(userName === '' || userName === null){
+}else if(userName.replace(/\s*/g, '') === '' || userName === null){
     console.log('cancled');
 }else{
     console.log("can't check");
 }
+
+
 
 //! 대소문자 구분 없이 입력 받아도 로그인이 되게끔?
