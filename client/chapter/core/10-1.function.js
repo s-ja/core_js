@@ -92,7 +92,7 @@ console.log(result);
  2. validation
  3. return value
  4. parameter, argument
- 5. test [Test Driven Development]
+ 5. test [Test Driven Development]  =/= CDD(component driven development) =/= JDD(?ㅋㅋㅋ)
  */
 
 // rem(pxValue: number|string, base: number):string;
