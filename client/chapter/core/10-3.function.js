@@ -59,7 +59,7 @@ const calculateTotal = (...args) => {
 // ! 일반 함수 => 나, 화살표 함수 => 내 위의 부모 (즉, 전역인 window 나옴)
 // ! 객체 안에서 함수 메서드는 일반 함수가 낫다
 //? 객체의 메서드로 함수를 실행할 경우는 일반함수로 실행해야 this가 객체를 찾습니다.
-//? 메서드 안에서의 함수는 this 를 찾기 위해서는 arrowFunction 이 오히려 좋아
+//? 메서드 안에서의 함수는 this 를 찾기 위해서는 arrowFunction 이 오히려 좋다.
 
   const user = {
     name: 'asj',
