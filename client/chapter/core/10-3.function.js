@@ -82,9 +82,37 @@ const calculateTotal = (...args) => {
   /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
   
   // pow(numeric: number, powerCount: number): number;
-  let pow;
+  let pow = (numeric, powerCount) =>{
+    let result = 1;
+    for(let i =0; i<powerCount; i++){
+      result*=numeric
+    }
+    return result;
+  };
+
+  let powExpression = (numeric,powerCount) => Array(powerCount).fill(null).reduce(acc=> acc*numeric,1)
+
+  // let powExpression = (numeric,powerCount) => {
+  //   return Array(powerCount).fill(null).reduce(acc=> acc*numeric,1)
+  // }
+  console.log(powExpression(2,53));
 
   pow(2,53) // 9007199254740992
+
+
   
   // repeat(text: string, repeatCount: number): string;
-  let repeat; 
+  // let repeat; 
+  let repeat = (text,repeatCount) => {
+    //validation
+    if(!repeatCount){
+      throw new Error('반복값을 넣어주세요.')
+    }
+    let result = '';
+    for(let i=0;i<repeatCount;i++){
+      result += text;
+    }
+    return result;
+  };
+
+  let repeatExpression = (text,repeatCount) => Array(repeatCount).fill(null).reduce(acc=> {acc+ text},'')
