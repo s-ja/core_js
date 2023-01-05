@@ -86,7 +86,7 @@ function createUser(computedProp = 'phone'){
 return{
     name: 'unknown',
     email: 'dkstmdwl0615@naver.com'
-    [computedProp]: '010-7169-0262'
+    // [computedProp]: '010-7169-0262'
 }
 
 }
@@ -122,9 +122,9 @@ function getPropertiesList(Object){
     }
     return result;
 }
-function getPropertiesList(Object){
-    return Object.keys(Object)
-}
+// function getPropertiesList(Object){
+//     return Object.keys(Object)
+// }
 
 // 프로퍼티 제거 or 삭제 
 // remove or delete
