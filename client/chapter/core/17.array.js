@@ -12,35 +12,54 @@
 
 
 // 배열 선언
-
+let friends = '일범,보경,서현,세은,성욱,로운,대웅,선희,진우,수경,아현,동경'.split(',')
+let arr = new Array(1,2,3,4,5,6)
+//let friends = ['일범','보경','서현','세은','성욱']
+console.log(friends);
+console.log(arr);
 
 // 배열 요소의 총 갯수
-
+console.log(friends.length);
 
 // 배열 요소 변경
-
+friends[0] = '선범'
+console.log(friends);
 
 // 배열 요소 추가
-let unshift;
-let push;
+let unshift = friends.unshift('보영');
+console.log(unshift);
+console.log(friends);
+
+let push = friends.push('원준');
+console.log(push);
+console.log(friends);
 
 
 // 배열 요소 제거
-let shift;
-let pop;
+let shift = friends.shift();
+console.log(shift);
+console.log(friends);
+
+let pop = friends.pop();
+console.log(pop);
+console.log(friends);
 
 
 // 큐(queue) vs. 스택(stack)
-// 큐 FIFO (먼저 들어온 것이 먼저 나간다) ← queue ←
-// 스택 LIFO (나중에 들어온 것이 먼저 나간다) ↓ stack ↑
+// 큐 FIFO (먼저 들어온 것이 먼저 나간다) ← queue ← //?first in first out
+// 스택 LIFO (나중에 들어온 것이 먼저 나간다) ↓ stack ↑ //?last in first out
 
 
 // 배열 요소 순환(loop)
 // for 문, for ~ of문
 
+for(let value of friends){
+    console.log(value);
+}
 
 // 배열 복사
-let copiedArray;
+// let copiedArray = friends;//*참조에 대한 복사(제대로 된 복사 x)
+let copiedArray = [...friends];
 
 
 // 다차원 배열
@@ -53,3 +72,5 @@ const matrix = [
 ];
 
 // 행렬의 정중앙에 위치한 요소를 찾으려면?
+
+console.log(matrix[1][1]) //* -> 5
