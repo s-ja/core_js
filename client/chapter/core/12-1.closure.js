@@ -46,10 +46,10 @@ console.log(count);
 
 function number_(){
     let count = 0;
-    function inner(){
-        return ++count
-    }
-    return inner
+    // return function inner(){
+    // return function(){
+    return () => ++count
+    // return inner
 }
 
 const counter_ = number_();
