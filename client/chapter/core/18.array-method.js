@@ -85,7 +85,7 @@ let template =  todo.map((todoList)=>{
 
 template.forEach((item) => {
     document.body.insertAdjacentHTML("beforeend", item);
-  });
+});
 
 console.log(template);
 
@@ -174,9 +174,17 @@ let template2 = todo.reduce((acc,cur,index) => {
 
 console.log(template2);
 
-// reduceRight
+// reduceRight //*그냥 오른쪽부터 시작함
 
 /* string ←→ array 변환 ------------------------------------------------- */
 
-// split
-// join
+let str = '성찬 보경 일범 세민 형진 주현';
+
+// split //*문자를 배열로 만들어 주는 기능
+
+let nameArray = str.split(' ')
+console.log(nameArray);
+
+// join //*배열을 문자로 만들어 주는 기능
+
+console.log(nameArray.join(' / '));
