@@ -72,7 +72,20 @@ first.dataset.play = 'playing' //set
 
 console.log(first.dataset.play); ///get
 
+//! 유틸함수를 만들자, get 함수 + set 함수 = common 함수
 
+//get 함수 만들기
+function getAttr(node,prop){
+
+    if(typeof node === 'string'){
+        node = getNode(node);
+    }
+    
+    node.getAttribute(prop);
+}
+
+
+getAttr('.first','class') //first
 
 //? getNode라는 함수를 보호할때(?) - 즉시 실행함수 예시
 // (function () {
