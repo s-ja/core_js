@@ -38,7 +38,7 @@ h1.after(div)
 
 // - node.replaceWith(노드나 문자열) – node를 대체
 
-// h1.replaceWith(div)
+//? h1.replaceWith(div)
 
 // - node.remove() – node를 제거 //hidden은 제거 remove는 삭제(?)
 
@@ -64,21 +64,59 @@ let template = /* html */ `<div class='box0${index}'><i>test test test test test
 // h1.insertAdjacentHTML('beforeend',template)
 
 
+// insertBefore
 function insertBefore(node,text){
 
+    
     if(typeof node === 'string'){
         node = getNode(node);
     }
     
+    if(node.nodeType !== document.ELEMENT_NODE) throw new TypeError ('insertBefore 함수의 첫 번째 인자는 ELEMENT_NODE 이어야 합니다.')
     node.insertAdjacentHTML('beforebegin',text)
 }
 
 
 insertBefore('h1',template)
 
-insertFirst
-insertLast
-insertAfter
+// insertFirst
+
+function insertFirst(node,text){
+    
+    if(typeof node === 'string'){
+        node = getNode(node);
+    }
+    
+    node.insertAdjacentHTML('afterbegin',text)
+}
+
+insertFirst('h1',template)
+
+
+// insertLast
+
+function insertLast(node,text){
+    
+    if(typeof node === 'string'){
+        node = getNode(node);
+    }
+    
+    node.insertAdjacentHTML('beforeend',text)
+}
+
+insertLast('h1',template)
+
+// insertAfter
+
+function insertAfter(node,text){
+    
+    if(typeof node === 'string') node = getNode(node);
+    
+    node.insertAdjacentHTML('afterend',text)
+}
+
+insertAfter('h1',template)
+
 
 
 // - "beforebegin" – elem 바로 앞에 html을 삽입
@@ -92,3 +130,27 @@ insertAfter
 
 // - "afterend" – elem 바로 다음에 html을 삽입
 // h1.insertAdjacentHTML('afterend',template)
+
+cl
+/* //!모범답안
+function insertBefore(node, text) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeType !== document.ELEMENT_NODE) throw new TypeError("insertBefore 함수의 첫 번째 인자는 ELEMENT 노드여야 합니다");
+  node.insertAdjacentHTML("beforebegin", text);
+}
+function insertFirst(node, text) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeType !== document.ELEMENT_NODE) throw new TypeError("insertFirst 함수의 첫 번째 인자는 ELEMENT 노드여야 합니다");
+  node.insertAdjacentHTML("afterbegin", text);
+}
+function insertLast(node, text) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeType !== document.ELEMENT_NODE) throw new TypeError("insertLast 함수의 첫 번째 인자는 ELEMENT 노드여야 합니다");
+  node.insertAdjacentHTML("beforeend", text);
+}
+function insertAfter(node, text) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeType !== document.ELEMENT_NODE) throw new TypeError("insertAfter 함수의 첫 번째 인자는 ELEMENT 노드여야 합니다");
+  node.insertAdjacentHTML("afterend", text);
+}
+ */

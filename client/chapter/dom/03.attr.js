@@ -128,7 +128,7 @@ function attr(node,prop,value){
 // const second = getNode('.second')
 
 getAttr('.first','class');
-
+    
 setAttr('.first','data-value','hello');
 
 console.log(attr('.first','id'))
