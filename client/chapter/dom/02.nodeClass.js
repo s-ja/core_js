@@ -40,11 +40,25 @@ console.log(first.tagName !== 'SPAN') //false
 /* 노드 콘텐츠 읽기/쓰기 ---------------------------------------------------- */
 
 // - innerHTML
+
+// first.innerHTML += '<br><i>좋은 아침입니다.</i></br>' //뒤에만 붙일 수 있음.
+// first.outerHTML = ''
+
 // * 기존 내용 삭제
+// first.innerHTML = ''
+
 // * 기존 내용과 새로운 내용을 합친 새로운 내용을 씀
+first.innerHTML += '<br><i>좋은 아침입니다.</i></br>' //뒤에만 붙일 수 있음.
 
 // - textContent
+
+console.log(first.textContent ); //getter의 역할 - 아무것도 안씀
+
 // * 요소 내의 텍스트에 접근
+
+first.textContent = 'LikeLion ' //setter의 역할
+// first.textContent = '<i>LikeLion</i>' //setter의 역할
+
 // * 태그는 제외하고 오로지 텍스트만 추출
 
 
@@ -53,3 +67,15 @@ console.log(first.tagName !== 'SPAN') //false
 // - hidden
 // * hidden은 HTML 속성으로, DOM 프로퍼티로 사용 가능
 // * hidden 프로퍼티는 기술적으로 style="display:none"와 동일
+
+// first.hidden = true;
+getNode('h1').hidden = false;
+
+let toggle = false;
+setInterval(() => {
+    getNode('h1').hidden = toggle ? false : true
+    toggle = !toggle
+},1000)
+
+//? 이런식으로 dom을 조작할수록 성능이 안좋아질 수 있음. but interactive web은 이러한 조작을 많이 함.
+//? canvas(?)
