@@ -1,3 +1,5 @@
+/*//*gloabal getNode - eslint error fix(?)*/
+
 /* ---------------------------------------------------------------------- */
 /* DOM traversal                                                          */
 /* ---------------------------------------------------------------------- */
@@ -105,3 +107,26 @@ console.log(getNode("h1").contains(getNode(".first")));
 
 
 // - contains
+
+
+//! 23.01.07스터디 질문 관련 코드
+// console.log(거듭제곱(2, 2))
+// console.log(거듭제곱(2, 3))
+
+// function 거듭제곱(왼쪽값 = 1, 오른쪽값 = 2) {
+// 	return 왼쪽값 ** 오른쪽값
+// }
+
+// Number.prototype.거듭제곱 = function (오른쪽값 = 2) {
+// 	return this.valueOf() ** 오른쪽값
+// }
+
+// const a = 2;
+// // (2).
+// // new Number(2).
+
+// '문자열'.
+// new Date().
+
+// console.log(a.거듭제곱(2))
+// console.log(a.거듭제곱(3))

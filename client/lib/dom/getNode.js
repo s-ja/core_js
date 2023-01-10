@@ -19,4 +19,4 @@ function getNodes(node){
 }
 
 
-console.log(getNode('.first'));
+// console.log(getNode('.first'));
