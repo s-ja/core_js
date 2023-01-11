@@ -16,6 +16,9 @@
 const first = getNode('.first')
 const second = getNode('.second')
 
+const ground = getNode('.ground')
+const ball = getNode('.ball')
+
 // console.log(first);
 
 function handler(){
@@ -40,39 +43,38 @@ first.addEventListener('click',handler)
 
 
 
-function bindEvent(node, type, handler) {
-
-
-
-
-    if (typeof node === "string") node = getNode(node);
-
-
-
-
-    if (!/mouseenter|click|mousemove|mouseleave/g.test(type)) {
-      typeError("bindEvent 함수의 두 번째 인자는 유효한 이벤트 타입 이어야 합니다.");
-    }
+// function bindEvent(node, type, handler) {
+//     if (typeof node === "string") node = getNode(node);
+//     if (!/mouseenter|click|mousemove|mouseleave/g.test(type)) {
+//       typeError("bindEvent 함수의 두 번째 인자는 유효한 이벤트 타입 이어야 합니다.");
+//     }
+//     node.addEventListener(type, handler);
+//     return() => node.removeEventListener(type,handler);
+// }
   
+// //   bindEvent(".first", "click", handler);
+
+// const off = bindEvent(".first", "click", handler);
+
+// bindEvent(".second", "click", off);
 
 
+ground.addEventListener('click',function(e){
+    // console.log('ground hit');
 
-    node.addEventListener(type, handler);
-
-
-
-    return() => node.removeEventListener(type,handler);
-}
+    console.log(e.offsetX, e.offsetY);
 
 
+    ball.style.transform = /* CSS */ `translate(${e.offsetX - ball.offsetWidth / 2}px, ${e.offsetY - ball.offsetHeight / 2}px)`;
 
+})
 
+ground.addEventListener('mousemove',function(e){
+    console.log(e.offsetX, e.offsetY);
 
+    let postX = e.offsetX
+    let postY = e.offsetY
 
+    const emotion = /* HTML */`<div class="emotion" style=""></div>`
 
-  
-//   bindEvent(".first", "click", handler);
-
-const off = bindEvent(".first", "click", handler);
-
-bindEvent(".second", "click", off);
+})

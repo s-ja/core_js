@@ -5,7 +5,7 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: darkslategray;
-    color: darkred;
+    color: aliceblue;
 }
 
 /* h1{
@@ -35,3 +35,45 @@ body{
     transform: translateY(-300px);
     
 } */
+
+.ground{
+  width: 600px;
+  height: 400px;
+  background: greenyellow;
+  border: 10px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.ball{
+  transition: all .3s;
+  pointer-events: none;
+  /* 마우스로 인식이 안되는 기능, 클릭가능한 개체에서 제외 */
+}
+
+.visual{
+  padding: 1.5rem;
+  background-color: darkred;
+}
+
+.news{
+  padding: 1rem;
+  background-color: red;
+}
+
+.desc{
+  padding: 1rem;
+  background-color: maroon;
+}
+
+.pop{
+  width: 30vw;
+  height: 30vw;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+}
