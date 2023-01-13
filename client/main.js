@@ -1,4 +1,5 @@
-
+/* eslint no-undef: 'warn'*/ 
+/* eslint no-unused-vars: 'off'*/ 
 
 
 
@@ -23,3 +24,128 @@ console.log(window);
 // *다른 사람의 프로젝트를 받아오고 나면 가장 먼저 npm install 부터 할것!
 // package.json 의 기록을 토대로 필요한 노드 패키지들을 다운함.
 
+
+//1. 인풋 벨류값 가져오기
+//2. 이벤트 핸들러 연결하기
+//3. 이벤트 기본동작 차단하기
+//4. 두수의 합을 더해주기
+//5. 화면에 출력하기
+
+
+// const firstNumber = getNode('#firstNumber')
+// const secondNumber = getNode('#secondNumber')
+// const done = getNode('#done')
+// const result = getNode('.result')
+
+// console.log(firstNumber);
+// console.log(secondNumber);
+// console.log(done);
+
+
+// function handler(e){
+//     let firstNumber = getNode('#firstNumber')
+//     let secondNumber = getNode('#secondNumber')
+//     let result = getNode('.result')
+//     // let done = getNode('#done')
+
+//     e.preventDefault()
+//     let target = e.target
+//     console.log(target);
+    
+//     firstNumber = +(firstNumber.value)
+//     secondNumber = +(secondNumber.value)
+//     let plus = firstNumber + secondNumber
+    
+//     console.log(firstNumber);
+//     console.log(secondNumber);
+//     console.log(result);
+//     console.log(plus);
+
+//     result.insertAdjacentHTML("beforeend", plus);
+// }
+
+
+
+// done.addEventListener('click',handler)
+
+//! 1. 인풋 벨류값 가져오기
+//! 2. 이벤트 핸들러 연결하기
+//! 3. 이벤트 기본동작 차단하기
+//! 4. 두수의 합을 더해주기
+//! 5. 화면에 출력하기
+
+const firstInput = getNode('#firstNumber')
+const secondInput = getNode('#secondNumber')
+const result = getNode('.result')
+
+const done = getNode('#done')
+
+function getInputValue(node){
+    if(typeof node === 'string') node = getNode(node);
+    if(node.tagName !== 'INPUT') refError('getInputValue 함수는 INPUT ELEMENT만 허용합니다.')
+    return node.value
+}
+
+const sum = (valueA,valueB) => valueA + valueB;
+// function sum(valueA,valueB){
+//     return valueA + valueB;
+// }
+
+function clearContents(node){
+    if(typeof node === 'string') node = getNode(node);
+    node.textContent = '';
+}
+
+
+function handler(e){
+    e.preventDefault();
+    // let firstValue = firstInput.value;
+    let firstValue = +getInputValue(firstInput);
+    let secondValue = +getInputValue(secondInput);
+
+    // let total = firstValue + secondValue
+    let total = sum(firstValue,secondValue);
+
+
+    // console.log(firstValue, secondValue);
+    // console.log(typeof firstValue, typeof secondValue);
+    // console.log(total);
+
+    // getNode('.result').textContent = ''
+    clearContents('.result');
+    
+    insertLast('.result',total);
+}
+
+function inputHandler(){
+    // let firstValue = +getInputValue(firstInput)
+
+    // console.log(firstInput);
+
+    let firstValue = +getInputValue(firstInput);
+    let secondValue = +getInputValue(secondInput);
+
+    // let total = firstValue + secondValue
+    let total = sum(firstValue,secondValue);
+
+
+    // console.log(firstValue, secondValue);
+    // console.log(typeof firstValue, typeof secondValue);
+    // console.log(total);
+
+    // getNode('.result').textContent = ''
+    clearContents(result);
+    
+    insertLast(result,total);
+}
+
+
+
+
+
+
+
+done.addEventListener('click',handler)
+
+firstInput.addEventListener('change',inputHandler)
+secondInput.addEventListener('change',inputHandler)
