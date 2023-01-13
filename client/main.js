@@ -1,7 +1,7 @@
 // const { getNode } = require("./lib");
 
 // import { getNode } from "./lib/dom/getNode.js";
-import { getInputValue, getNode } from "./lib/index.js";
+import { getInputValue, getNode, getRandom, insertLast, clearContents } from "./lib/index.js";
 
 
 import { jujeobData } from "./data/data.js";
@@ -29,11 +29,9 @@ import { jujeobData } from "./data/data.js";
 
 
 const submit = getNode('#submit')
+let resultArea = getNode('.result')
 
 console.log(submit);
-
-
-
 
 
 function clickSubmitHandler(e){
@@ -44,11 +42,12 @@ function clickSubmitHandler(e){
 
     // console.log(name);
 
-
     let list = jujeobData(name)
 
-    console.log(list);
+    let pick = list[getRandom(list.length-1)]
 
+    clearContents(resultArea)
+    insertLast(resultArea,pick)
 }
 
 

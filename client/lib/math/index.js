@@ -1,4 +1,4 @@
 
 
 export * from './sum.js'
-export * from './getRandom'
+export * from './getRandom.js'
