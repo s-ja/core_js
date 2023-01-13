@@ -1,7 +1,7 @@
 // const { getNode } = require("./lib");
 
 // import { getNode } from "./lib/dom/getNode.js";
-import { getInputValue, getNode, getRandom, insertLast, clearContents, isNumericString } from "./lib/index.js";
+import { getInputValue, getNode, getRandom, insertLast, clearContents, isNumericString, showAlert } from "./lib/index.js";
 
 
 import { jujeobData } from "./data/data.js";
@@ -64,12 +64,12 @@ function clickSubmitHandler(e){
 
     if(!name){
         console.log('이름을 입력하여 주세요.');
-        alert('이름을 입력하여 주세요.');
+        showAlert('.alert','이름을 입력하여 주세요.',3000)
         return
     }
     if(isNumericString(name)){
         console.log('숫자는 입력이 불가합니다.');
-        alert('숫자로만은 입력이 불가합니다.');
+        showAlert('.alert','숫자는 입력이 불가합니다.',3000)
         return
     }
     
