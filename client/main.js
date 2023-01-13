@@ -1,4 +1,18 @@
-/* eslint no-undef: 'warn'*/ 
+// import { getNode } from "./lib/dom/getNode";
+
+// import { css, addClass, removeClass, toggleClass } from "./lib/dom/css";
+
+// import { attr } from "./lib/dom/attr";
+
+
+import{
+    getNode,
+    css,
+    addClass,
+    removeClass,
+} from "./lib/index.js"
+
+/* eslint no-undef: 'warn'*/
 /* eslint no-unused-vars: 'off'*/ 
 
 
