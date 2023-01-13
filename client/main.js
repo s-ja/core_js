@@ -1,10 +1,24 @@
 // const { getNode } = require("./lib");
 
 // import { getNode } from "./lib/dom/getNode.js";
-import { getInputValue, getNode, getRandom, insertLast, clearContents } from "./lib/index.js";
+import { getInputValue, getNode, getRandom, insertLast, clearContents, isNumericString } from "./lib/index.js";
 
 
 import { jujeobData } from "./data/data.js";
+
+let data = 'asdf1234'
+data = Number(data)
+
+console.log(isNaN(data));
+console.log(isNaN('asdf123'));
+
+// function isNumericString(data){
+//     data = Number(data);
+//     return !isNaN(data);
+
+// }
+// console.log(isNumericString('asdf123'))
+
 
 // console.log('God Speed To You')
 // console.log(window);
@@ -38,6 +52,8 @@ function clickSubmitHandler(e){
     
     e.preventDefault();
     
+    console.log(e);
+
     let name = getInputValue('#nameField');
 
     // console.log(name);
@@ -46,6 +62,17 @@ function clickSubmitHandler(e){
 
     let pick = list[getRandom(list.length-1)]
 
+    if(!name){
+        console.log('이름을 입력하여 주세요.');
+        alert('이름을 입력하여 주세요.');
+        return
+    }
+    if(isNumericString(name)){
+        console.log('숫자는 입력이 불가합니다.');
+        alert('숫자로만은 입력이 불가합니다.');
+        return
+    }
+    
     clearContents(resultArea)
     insertLast(resultArea,pick)
 }
