@@ -1,3 +1,5 @@
+import { getNode } from "./getNode.js";
+
 /* 
 
 // IIFE 패턴 

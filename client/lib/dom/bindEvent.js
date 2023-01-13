@@ -1,3 +1,6 @@
+import { getNode } from "./getNode.js";
+import { typeError,syntaxError } from "../error/index.js";
+
 
 export function bindEvent(node,type,handler){
   if(typeof node === 'string'){
