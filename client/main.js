@@ -1,7 +1,9 @@
+
+
 // const { getNode } = require("./lib");
 
 // import { getNode } from "./lib/dom/getNode.js";
-import { getInputValue, getNode, getRandom, insertLast, clearContents, isNumericString, showAlert } from "./lib/index.js";
+import { getInputValue, getNode, getRandom, insertLast, clearContents, isNumericString, showAlert, copy, addClass, removeClass } from "./lib/index.js";
 
 
 import { jujeobData } from "./data/data.js";
@@ -65,6 +67,15 @@ function clickSubmitHandler(e){
     if(!name){
         console.log('이름을 입력하여 주세요.');
         showAlert('.alert','이름을 입력하여 주세요.',3000)
+
+        //?GSAP
+        gsap.fromTo(resultArea, 0.01, {x:-5}, {x:5, clearProps:"x", repeat:20})
+        // addClass(resultArea,'shake');
+        // setTimeout(()=>{
+        //     removeClass(resultArea,'shake')
+        // },1000);
+
+
         return
     }
     if(isNumericString(name)){
@@ -77,5 +88,21 @@ function clickSubmitHandler(e){
     insertLast(resultArea,pick)
 }
 
+function clickCopyHandler(){
+    // console.log("hit");
+    let text = resultArea.textContent;
+    // navigator.clipboard.writeText(text)
+    copy(text).then(() =>{
+        showAlert('.alert-success','클립보드 복사가 완료되었습니다.',2000)
+    })
+}
+
+
+
+
+
 
 submit.addEventListener('click',clickSubmitHandler)
+
+
+resultArea.addEventListener('click',clickCopyHandler)
