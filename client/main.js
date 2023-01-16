@@ -1,6 +1,6 @@
 /* global gsap */
 
-import { bindEvent, diceAnimation, getNode } from "./lib/index.js";
+import { bindEvent, diceAnimation, disableElement, enableElement, getNode, getNodes, invisibleElement, visibleElement } from "./lib/index.js";
 
 
 // console.log('God Speed To You')
@@ -31,9 +31,25 @@ import { bindEvent, diceAnimation, getNode } from "./lib/index.js";
 // 3. handlerRollingDice 함수 만들고 토글로 애니메이션 제어하기
 // 4. 변수 보호를 위한 클로저 + IIFE 사용하기
 
+// [ 레코드 리스트 보이기 ]
+// 1. handleRecord 함수를 만들기
+// 2. disable 활성 유틸 함수 만들기
+// 3. handleReset 함수를 만듭니다.
+// 4. visible 활성 유틸 함수 만들기
+// 5. toggleState 유틸 함수 만들기 
+
+//배열의 구조 분해 할당
+const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button')
+
+const recordListWrapper = getNode('.recordListWrapper')
+
+// console.log(button);
+
+// const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
+// const recordButton = getNode('.buttonGroup > button:nth-child(2)');
+// const resetButton = getNode('.buttonGroup > button:nth-child(3)');
 
 
-const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 // console.log(rollingDiceButton);
 
 // let id = setInterval(()=>{
@@ -43,30 +59,56 @@ const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 // clearTimeout(id)
 
 
-const handlerRollingDice = (() => {
+const handleRollingDice = (() => {
     // console.log('hit!');
 
     // diceAnimation()
     // stopAnimation = setInterval(diceAnimation,100)
 
-    let stopAnimation;
     let isRolling = false;
+    let stopAnimation;
 
 
     return() => {
         if(!isRolling){
             // console.log('first click');
             stopAnimation = setInterval(diceAnimation,1000)
+            // recordButton.disabled = true;
+
+            disableElement(recordButton);
+            disableElement(resetButton);
+           
         }else{
             // console.log('second click');
             clearInterval(stopAnimation)
+            // recordButton.disabled = false;
+            enableElement(recordButton);
+            enableElement(resetButton);
+            
         }
         isRolling = !isRolling;
     }
 })()
 // handlerRollingDice()()
 
+const handleRecord = () => {
+    // getNode('.recordListWrapper').hidden = false;
+
+    visibleElement(recordListWrapper)
+}
+
+const handleReset = () => {
+    invisibleElement(recordListWrapper)
+}
+
+
+
 // rollingDiceButton.addEventListener('click',handlerRollingDice())
-rollingDiceButton.addEventListener('click',handlerRollingDice) //IIFE
+rollingDiceButton.addEventListener('click',handleRollingDice) //IIFE
+
+
+
+recordButton.addEventListener('click',handleRecord)
+resetButton.addEventListener('click',handleReset)
 
 // let eventOff = bindEvent(rollingDiceButton,'click',handlerRollingDice);
