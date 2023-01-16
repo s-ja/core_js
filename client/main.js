@@ -1,6 +1,6 @@
 /* global gsap */
 
-import { diceAnimation } from "./lib/index.js";
+import { bindEvent, diceAnimation, getNode } from "./lib/index.js";
 
 
 // console.log('God Speed To You')
@@ -23,3 +23,34 @@ import { diceAnimation } from "./lib/index.js";
 
 // *다른 사람의 프로젝트를 받아오고 나면 가장 먼저 npm install 부터 할것!
 // package.json 의 기록을 토대로 필요한 노드 패키지들을 다운함.
+
+
+// [ 주사위 굴리기 ]
+// 1. dice 애니메이션 불러오기
+// 2. bindEvent 유틸함수 만들기
+// 3. handlerRollingDice 함수 만들고 토글로 애니메이션 제어하기
+// 4. 변수 보호를 위한 클로저 + IIFE 사용하기
+
+
+
+const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
+// console.log(rollingDiceButton);
+
+let id = setInterval(()=>{
+    console.log('hi!');
+},1000);
+
+clearInterval(id)
+// clearTimeout(id)
+
+const handlerRollingDice = () => {
+    // console.log('hit!');
+
+    diceAnimation()
+
+}
+
+
+rollingDiceButton.addEventListener('click',handlerRollingDice)
+
+// let eventOff = bindEvent(rollingDiceButton,'click',handlerRollingDice);
