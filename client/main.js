@@ -1,6 +1,6 @@
 /* global gsap */
 
-import { bindEvent, diceAnimation, disableElement, enableElement, getNode, getNodes, invisibleElement, visibleElement } from "./lib/index.js";
+import { bindEvent, diceAnimation, disableElement, enableElement, getNode, getNodes, invisibleElement, visibleElement,insertLast, attr, clearContents } from "./lib/index.js";
 
 
 // console.log('God Speed To You')
@@ -31,18 +31,60 @@ import { bindEvent, diceAnimation, disableElement, enableElement, getNode, getNo
 // 3. handlerRollingDice 함수 만들고 토글로 애니메이션 제어하기
 // 4. 변수 보호를 위한 클로저 + IIFE 사용하기
 
-// [ 레코드 리스트 보이기 ]
+// [ 레코드 리스트 보이기 ] //?clear
 // 1. handleRecord 함수를 만들기
 // 2. disable 활성 유틸 함수 만들기
 // 3. handleReset 함수를 만듭니다.
 // 4. visible 활성 유틸 함수 만들기
 // 5. toggleState 유틸 함수 만들기 
 
+// [ 레코드 템플릿 뿌리기 ]
+// 1. renderRecordListItem 함수 만들기
+// 2. HTML 템플릿 만들기
+// 3. 템플릿 뿌리기
+
+
+
+
+// [ 초기화 시키기 ]
+// 1. 
+// 2. HTML 템플릿 만들기
+// 3. 템플릿 뿌리기
+
+
+
+
+
+
+
 //배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button')
 
 const recordListWrapper = getNode('.recordListWrapper')
 
+let count = 0;
+let total = 0;
+
+
+function renderRecordListItem(){
+
+    let diceValue = Number(attr('#cube','data-dice'));
+    let template = /* html */
+    `<tr>
+    <td>${++count}</td>
+    <td>${diceValue}</td>
+    <td>${total += diceValue}</td>
+    </tr>`
+    
+    insertLast('.recordListWrapper tbody', template)
+    recordListWrapper.scrollTop = recordListWrapper.scrollHeight
+}
+
+
+
+
+
+//! ------------event------------
 // console.log(button);
 
 // const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
@@ -95,10 +137,17 @@ const handleRecord = () => {
     // getNode('.recordListWrapper').hidden = false;
 
     visibleElement(recordListWrapper)
+
+    renderRecordListItem();
 }
 
 const handleReset = () => {
+    count = 0;
+    total = 0;
+    
     invisibleElement(recordListWrapper)
+
+    clearContents('.recordListWrapper tbody')
 }
 
 
