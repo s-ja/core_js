@@ -1,9 +1,10 @@
+/* global gsap */
+
+import { diceAnimation } from "./lib/index.js";
 
 
-
-
-console.log('God Speed To You')
-console.log(window);
+// console.log('God Speed To You')
+// console.log(window);
 
 // log+tab
 // .log [extension : https://marketplace.visualstudio.com/items?itemName=jaluik.dot-log]
@@ -22,4 +23,3 @@ console.log(window);
 
 // *다른 사람의 프로젝트를 받아오고 나면 가장 먼저 npm install 부터 할것!
 // package.json 의 기록을 토대로 필요한 노드 패키지들을 다운함.
-
