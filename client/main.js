@@ -25,8 +25,8 @@ import { bindEvent, diceAnimation, getNode } from "./lib/index.js";
 // package.json 의 기록을 토대로 필요한 노드 패키지들을 다운함.
 
 
-// [ 주사위 굴리기 ]
-// 1. dice 애니메이션 불러오기
+// [ 주사위 굴리기 ] //?clear
+// 1. dice 애니메이션 불러오기 
 // 2. bindEvent 유틸함수 만들기
 // 3. handlerRollingDice 함수 만들고 토글로 애니메이션 제어하기
 // 4. 변수 보호를 위한 클로저 + IIFE 사용하기
@@ -36,21 +36,37 @@ import { bindEvent, diceAnimation, getNode } from "./lib/index.js";
 const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 // console.log(rollingDiceButton);
 
-let id = setInterval(()=>{
-    console.log('hi!');
-},1000);
-
-clearInterval(id)
+// let id = setInterval(()=>{
+//     console.log('hi!');
+// },1000);
+// clearInterval(id)
 // clearTimeout(id)
 
-const handlerRollingDice = () => {
+
+const handlerRollingDice = (() => {
     // console.log('hit!');
 
-    diceAnimation()
+    // diceAnimation()
+    // stopAnimation = setInterval(diceAnimation,100)
 
-}
+    let stopAnimation;
+    let isRolling = false;
 
 
-rollingDiceButton.addEventListener('click',handlerRollingDice)
+    return() => {
+        if(!isRolling){
+            // console.log('first click');
+            stopAnimation = setInterval(diceAnimation,1000)
+        }else{
+            // console.log('second click');
+            clearInterval(stopAnimation)
+        }
+        isRolling = !isRolling;
+    }
+})()
+// handlerRollingDice()()
+
+// rollingDiceButton.addEventListener('click',handlerRollingDice())
+rollingDiceButton.addEventListener('click',handlerRollingDice) //IIFE
 
 // let eventOff = bindEvent(rollingDiceButton,'click',handlerRollingDice);
