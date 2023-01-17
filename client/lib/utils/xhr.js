@@ -5,6 +5,7 @@ function xhrData({
     url = '',
     method = 'GET',
     body = null,
+    onSuccess = null,
     headers = {
         'Content-Type' : 'application/json',
         'Access-Control-Allow-Origin' : '*'
@@ -24,10 +25,10 @@ function xhrData({
     // xhr.open('GET','https://jsonplaceholder.typicode.com/users')
     xhr.open(method,url)
 
-    Object.entries(headers).forEach(([key,value])=>{
-        console.log(key,value);
-        xhr.setRequestHeader(key,value)
-    })
+    // Object.entries(headers).forEach(([key,value])=>{
+    //     console.log(key,value);
+    //     xhr.setRequestHeader(key,value)
+    // })
     
     // xhr.setRequestHeader('name','ASJ')
     
@@ -71,6 +72,12 @@ xhrData({
     // headers = {
     //     'Content-Type' : 'application/json'
     // }
+})
+xhrData({
+    url : 'https://jsonplaceholder.typicode.com/users/1',
+    onSuccess: () => {
+        
+    }
 })
 
 // console.log(xhr);
