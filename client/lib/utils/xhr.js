@@ -1,7 +1,7 @@
 //! XMLHttpRequest : XHR / native code / 생성자 함수
 
 // function xhrData(method,url,body){
-function xhrData({
+export function xhrData({
   url = '',
   method = 'GET',
   body = null,
