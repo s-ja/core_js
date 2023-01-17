@@ -2,15 +2,16 @@
 
 // function xhrData(method,url,body){
 function xhrData({
-    url = '',
-    method = 'GET',
-    body = null,
-    onSuccess = null,
-    headers = {
-        'Content-Type' : 'application/json',
-        'Access-Control-Allow-Origin' : '*'
-    }
-}){
+  url = '',
+  method = 'GET',
+  body = null,
+  onSuccess = null,
+  onFail = null,
+  headers = {
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin': '*',
+  },
+} = {}){
 
     // const {method, url, body} = options
 
@@ -51,11 +52,13 @@ function xhrData({
        if(status >= 200 && status < 400){
            if(readyState === 4){
                console.log('통신 성공!');
-            //    console.log(xhr.response);
-               console.log(JSON.parse(response));
-            //    console.log(typeof response);
+               onSuccess(JSON.parse(response));
+               //    console.log(xhr.response);
+               //    console.log(JSON.parse(response));
+               //    console.log(typeof response);
             }
         }else{
+            onFail('통신 실패')
             console.error('통신실패...');
         }
     })
@@ -65,20 +68,69 @@ function xhrData({
     
 }
 
-xhrData({
-    url : 'https://jsonplaceholder.typicode.com/users'
-    // method : 'GET',
-    // body : null,
-    // headers = {
-    //     'Content-Type' : 'application/json'
-    // }
-})
-xhrData({
-    url : 'https://jsonplaceholder.typicode.com/users/1',
-    onSuccess: () => {
-        
-    }
-})
+// xhrData({
+//     url : 'https://jsonplaceholder.typicode.com/users'
+//     method : 'GET',
+//     body : null,
+//     headers = {
+//         'Content-Type' : 'application/json'
+//     }
+// })
+
+// xhrData({
+//     url : 'https://jsonplaceholder.typicode.com/users/1',
+//     onSuccess: (result)=>{
+//         console.log(result);
+//     },
+//     onFail: (err) =>{
+//         console.error(err);
+//     }
+// })
+
+
+
+
+xhrData.get = (url,onSuccess,onFail) => {
+    xhrData({
+        url,
+        onSuccess,
+        onFail
+    })
+}
+xhrData.post = (url,body,onSuccess,onFail) => {
+    xhrData({
+        method:'POST',
+        body,
+        url,
+        onSuccess,
+        onFail
+    })
+}
+xhrData.put = (url,body,onSuccess,onFail) => {
+    xhrData({
+        method:'PUT',
+        body,
+        url,
+        onSuccess,
+        onFail
+    })
+}
+xhrData.delete = (url,body,onSuccess,onFail) => {
+    xhrData({
+        method:'DELETE',
+        url,
+        onSuccess,
+        onFail
+    })
+}
+
+
+
+
+
+
+
+
 
 // console.log(xhr);
 
