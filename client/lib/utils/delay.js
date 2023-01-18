@@ -1,24 +1,50 @@
-import { getNode } from "../dom/index.js";
+
+import { getNode } from '../dom/getNode.js'
+import { isNumber,isObject } from './typeOf.js'
 
 
 const first = getNode('.first');
+const second = getNode('.second');
+const third = getNode('.third');
 
-// console.log(first);
 
 function delay(callback,timeout = 1000){
-    setTimeout(callback,timeout);
+  setTimeout(callback, timeout);
 }
+// console.log(first);
+
+// function delay(callback,timeout = 1000){
+//     setTimeout(callback,timeout);
+// }
 
 
-delay(()=>{
-    first.style.top = '-100px'
-    delay(()=>{
-        first.style.transform = 'rotate(360deg)'
-        delay(()=>{
-            first.style.top = '0px'
-        })
-    })
-})
+// delay(()=>{
+//     first.style.top = '-100px'
+//     delay(()=>{
+//         first.style.transform = 'rotate(360deg)'
+//         delay(()=>{
+//             first.style.top = '0px'
+//         })
+//     })
+// })
+
+// delayP()
+// .then(()=>{
+//   first.style.top = '-100px';
+//   return delayP()
+// })
+// .then(()=>{
+//   first.style.transform = 'rotate(360deg)';
+//   second.style.left = '100px';
+//   third.style.left = '100px';
+//   return delayP()
+// })
+// .then(()=>{
+//     first.style.top = '0px';
+//     third.style.left = '0px';
+// })
+
+
 
 
 // first.style.transform = 'rotate(360deg)' // 동시에 작동 -> 콜백의 필요성 & 콜백지옥
@@ -28,3 +54,114 @@ delay(()=>{
 //! 프라미스 = 오로지 콜백의 가독성만을 위해.
 
 
+
+
+
+
+
+
+
+
+// function delayP(timeout=1000){
+// function delayP(shouldReject = false, timeout=1000,data = '성공했습니다.' , errorMessage = '알 수 없는 오류가 발생했습니다.'){
+
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             // if(!shouldReject){
+//             //     resolve('성공.');
+//             // }else{
+//             //     reject('실패.');
+//             // }
+//             !shouldReject ? resolve(data) : reject(errorMessage);
+//         },timeout);
+//     })
+// }
+
+
+// delayP(false, 1000, '과연 성공?' , 'Error')
+// delayP(false)
+
+// console.log(delayP());
+
+
+// delayP().then((res)=>{
+//     console.log(res);
+// }).then(()=>{
+//     //프라미스 체이닝 
+// }).then(()=>{
+//     //프라미스 체이닝 
+// }).then(()=>{
+//     //프라미스 체이닝 
+// }).then(()=>{
+//     //프라미스 체이닝 
+// }).then(()=>{
+//     //프라미스 체이닝 
+// })
+// delayP()
+// .then((res)=>{
+//     console.log(res);
+// })
+// .catch((err)=>{
+//     console.log(err);
+// })
+
+
+
+// delayP()
+// .then(res=>console.log(res))
+// .catch(err=>console.log(err))
+
+
+
+
+
+
+
+const defaultOption = {
+    shouldReject : false,
+    timeout : 1000,
+    data : '성공',
+    errorMessage : '알 수 없는 오류가 발생했습니다.'
+}
+
+
+
+
+export function delayP(options = {}){
+    
+    // const {shouldReject,data,errorMessage,timeout} = options
+
+    let config = {...defaultOption};
+    // let config2 = Object.assign({},defaultOption)
+
+    if(isNumber(options)){
+        config.timeout = options;
+    }
+
+    if(isObject(options)){
+        config = {...config,...options};
+    }
+    
+    
+    //객체합성 (mixin)
+
+    const {shouldReject,data,errorMessage,timeout} = config;
+
+    
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            // if(!shouldReject){
+            //     resolve('성공.');
+            // }else{
+            //     reject('실패.');
+            // }
+            !shouldReject ? resolve(data) : reject(errorMessage);
+        },timeout);
+    })
+}
+
+// delayP({
+//     data: '안녕',
+//   }).then((res)=>{
+//     console.log(res); // 진짜 성공
+//   })

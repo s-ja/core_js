@@ -1,4 +1,5 @@
-import { insertLast, xhrData } from "./lib/index.js"
+import { xhrData,insertLast } from "./lib/index.js";
+
 
 
 // xhrData.get(
@@ -13,29 +14,29 @@ import { insertLast, xhrData } from "./lib/index.js"
 //     }
 // )
 
- // 얘는 스코프가 없기 때문에 이렇게 적용되는게 맞음
+// 얘는 스코프가 없기 때문에 이렇게 적용되는게 맞음
 
-    // let num = 0;
-    // console.log('초기 값', num); // 0
+// let num = 0;
+// console.log('초기 값', num); // 0
 
-    // const test = () => num++;
+// const test = () => num++;
 
-    // console.log('함수호출 전', num); // 0
+// console.log('함수호출 전', num); // 0
 
-    // test() // 호출!! -> 전역변수 num 값이 변경됨 
+// test() // 호출!! -> 전역변수 num 값이 변경됨 
 
-    // console.log('함수호출 후', num); // 1로 변경
+// console.log('함수호출 후', num); // 1로 변경
 
-    // // 
+// // 
 
-    // console.log('숫자4 할당 전', num); // 1
+// console.log('숫자4 할당 전', num); // 1
 
-    // num = 4;
+// num = 4;
 
-    // console.log('숫자4 할당 후', num); // 4
+// console.log('숫자4 할당 후', num); // 4
 
 
-    /* -------------------------------------- */
+/* -------------------------------------- */
 
 
 // const handleRollginDice = ((e) => {
