@@ -156,3 +156,27 @@ xhrData.delete = (url,body,onSuccess,onFail) => {
 //         "bs": "generate enterprise e-tailers"
 //     }
 // })
+
+//! promise API converting
+
+function xhrPromise() {
+    const xhr = new XMLHttpRequest();
+  
+    xhr.open(method, url);
+  
+    return new Promise((resolve, reject) => {
+      xhr.addEventListener('readystatechange', () => {
+        const { status, readyState, response } = xhr;
+  
+        if (status >= 200 && status < 400) {
+          if (readyState === 4) {
+            JSON.parse(response)
+          } else {
+            console.log('실패');
+          }
+        }
+      });
+    });
+  
+    xhr.send();
+  }
