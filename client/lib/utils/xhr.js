@@ -43,7 +43,7 @@ export function xhrData({
     4:complete //완료
     */
    
-//    xhr.addEventListener('readystatechange',()=>{
+    //    xhr.addEventListener('readystatechange',()=>{
    xhr.addEventListener('readystatechange',()=>{
        // console.log(xhr.readyState);
        // console.log(xhr.status);
