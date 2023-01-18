@@ -165,3 +165,51 @@ export function delayP(options = {}){
 //   }).then((res)=>{
 //     console.log(res); // 진짜 성공
 //   })
+
+
+
+
+
+//! async & await
+
+async function delayA(){
+    return '완료'
+}
+
+// let result = delayA().then((res)=>{console.log(res);})
+// let result = delayA()
+let result = await delayA()
+
+console.log(typeof result);
+console.log(result);
+
+async function 라면끓이기(){
+    try{
+
+        await delayP(1000)
+        first.style.top = '-100px';
+        
+        await delayP(1000)
+        first.style.transform = 'rotate(360deg)';
+        
+        await delayP(1000)
+        first.style.top = '0px';
+        
+        await delayP(1000)
+        console.log('계란넣기');
+        // throw new Error('계란 껍질이 들어갔다.');
+        
+        await delayP(1000)
+        console.log('그릇에담기');
+        
+    }catch(err){
+        console.log(err);
+    }
+}
+  
+  
+  
+
+라면끓이기()
+  
+  

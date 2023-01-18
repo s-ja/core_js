@@ -203,16 +203,27 @@ export function xhrPromise(options = {}) {
     });
   
     // xhr.send(body);
-  }
+}
 
-xhrPromise({
-url : 'https://jsonplaceholder.typicode.com/users'
-})
-.then((res)=>{
-console.log(res);
-}).catch((err)=>{
-console.log(err);
-})
+  
+  
+
+  
+
+// xhrPromise({
+// url : 'https://jsonplaceholder.typicode.com/users'
+// })
+// .then((res)=>{
+// console.log(res);
+// }).catch((err)=>{
+// console.log(err);
+// })
+
+
+
+
+
+
 
 xhrPromise.get = (url) => {
     return xhrPromise({
@@ -250,11 +261,11 @@ xhrPromise.delete = (url) => {
 
 
 
-xhrPromise
-.get('https://jsonplaceholder.typicode.com/users')
-.then((res)=>{
-console.log(res);
-})
-.catch((err)=>{
-console.log(err);
-})
+// xhrPromise
+// .get('https://jsonplaceholder.typicode.com/users')
+// .then((res)=>{
+// console.log(res);
+// })
+// .catch((err)=>{
+// console.log(err);
+// })
