@@ -18,7 +18,7 @@ function delay(callback,timeout = 1000){
 // }
 
 
-// delay(()=>{
+// delay(()=>{ //!콜백 지옥
 //     first.style.top = '-100px'
 //     delay(()=>{
 //         first.style.transform = 'rotate(360deg)'
@@ -28,7 +28,7 @@ function delay(callback,timeout = 1000){
 //     })
 // })
 
-// delayP()
+// delayP() //!promise : 콜백에 대한 타파
 // .then(()=>{
 //   first.style.top = '-100px';
 //   return delayP()

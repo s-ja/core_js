@@ -5,7 +5,7 @@ const defaultOptions = {
     cache: 'no-cache',
     credential: 'same-origin',
     redirect:'follow',
-    referrerPolicy:'no-reffere',
+    referrerPolicy: 'no-referrer',
     headers:{
       'Content-Type':'application/json; charset=UTF-8'
     }
@@ -17,11 +17,8 @@ const defaultOptions = {
 
 
 
-
-
-
-
 // async function tiger{
+
 export const tiger = async (options = {}) =>{
 
 
@@ -60,9 +57,10 @@ export const tiger = async (options = {}) =>{
             // console.log(response.json());
 
             response.data = await response.json()
-        }else{
-            throw new Error('Error : 404')
         }
+        // else{
+        //     throw new Error('Error : 404')
+        // }
 
 
 
@@ -81,7 +79,7 @@ export const tiger = async (options = {}) =>{
         
         
         
-        return response;
+    return response;
 }
 
 // tiger();
@@ -90,13 +88,13 @@ export const tiger = async (options = {}) =>{
 
 
 tiger.get = (url,options) =>{
-    tiger({
+    return tiger({
         url,
         ...options
     })
 }
 tiger.post = (url,body,options) =>{
-    tiger({
+    return tiger({
         method: 'POST',
         url,
         body:JSON.stringify(body),
@@ -104,7 +102,7 @@ tiger.post = (url,body,options) =>{
     })
 }
 tiger.put = (url,body,options) =>{
-    tiger({
+    return tiger({
         method: 'PUT',
         url,
         body:JSON.stringify(body),
@@ -112,11 +110,11 @@ tiger.put = (url,body,options) =>{
     })
 }
 tiger.delete = (url,options) =>{
-    tiger({
+    return tiger({
         method: 'DELETE',
         url,
         ...options
     })
 }
 
-tiger.post('https://jsonplaceholder.typicode.com/users/1',{name:'tiger'},{mode:'cors',headers:{}})
+// tiger.post('https://jsonplaceholder.typicode.com/users/1',{name:'tiger'},{mode:'cors',headers:{}})
