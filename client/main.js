@@ -1,4 +1,4 @@
-import { xhrData,insertLast, xhrPromise, tiger, delayP } from "./lib/index.js";
+import { insertLast, tiger, delayP } from "./lib/index.js";
 
 
 
@@ -76,3 +76,39 @@ import { xhrData,insertLast, xhrPromise, tiger, delayP } from "./lib/index.js";
 // })
   
 // document.querySelector('h1').addEventListener('click', handleRollginDice())
+
+
+
+
+
+
+
+
+
+
+//? function rendingUserList
+
+//? ajax get user list - https://jsonplaceholder.typicode.com/users
+
+
+async function rendingUserList(){
+
+    
+    await delayP(2000);
+    let response =  await tiger.get('https://jsonplaceholder.typicode.com/users')
+    console.log(response.data);
+}
+
+// console.log(rendingUserList());
+
+// console.log(tiger.get('https://jsonplaceholder.typicode.com/users'))
+
+async function rendingUserList_(){
+    // tiger.get('https://jsonplaceholder.typicode.com/users').then((res)=>{console.log(res);})
+    let response = await tiger.get('https://jsonplaceholder.typicode.com/users')
+
+    let userData = response.data;
+    console.log(userData);
+
+}
+rendingUserList_()
