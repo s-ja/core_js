@@ -2,7 +2,19 @@
 
 // gsap.registerPlugin
 
-import { insertLast, tiger, delayP, getNode, renderUserCard, changeColor, renderSpinner } from "./lib/index.js";
+// import { insertLast, tiger, delayP, $, renderUserCard, changeColor, renderSpinner, renderEmptyCard } from "./lib/index.js";
+
+import {
+    tiger,
+    delayP,
+    getNode as $,
+    insertLast,
+    changeColor,
+    renderSpinner,
+    renderUserCard,
+    renderEmptyCard,
+    attr
+  } from './lib/index.js';
 
 
 
@@ -105,14 +117,14 @@ import { insertLast, tiger, delayP, getNode, renderUserCard, changeColor, render
 //? 4. renderUserCard 함수를 사용했을 때 렌더링이 잘 될 수 있도록
 
 
-const userCardContainer = getNode('.user-card-inner')
+const userCardContainer = $('.user-card-inner')
 
 
 async function rendingUserList(){
 
     
     await delayP(2000);
-    let response =  await tiger.get('https://jsonplaceholder.typicode.com/users')
+    let response =  await tiger.get('https://jsonplaceholder.typicode.com/user')
     console.log(response.data);
 }
 
@@ -127,6 +139,8 @@ async function rendingUserList_(){
     try{
 
         await delayP(2000)
+
+        $('.loadingSpinner').remove();
         
         // tiger.get('https://jsonplaceholder.typicode.com/users').then((res)=>{console.log(res);})
         let response = await tiger.get('https://jsonplaceholder.typicode.com/users')
@@ -158,8 +172,30 @@ async function rendingUserList_(){
         }
         )
     }catch(err){
-        console.log(err);
+        // console.log(err);
+        renderEmptyCard(userCardContainer)
     }
         
 }
 rendingUserList_()
+
+//? 삭제 버튼을 클릭하면 콘솔창에 '삭제' 글자가 출력이 될 수 있도록 만들어라.
+
+
+function handler(e){
+    let deleteButton = e.target.closest('button');
+    let article = e.target.closest('article');
+
+
+    // if(target.tagName === "BUTTON")
+    if(!deleteButton || !article) return;
+
+    let id = attr(article,'data-index').slice(5);
+    
+    tiger.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+}
+
+
+
+
+userCardContainer.addEventListener('click',handler)
