@@ -143,7 +143,7 @@ async function rendingUserList_(){
         $('.loadingSpinner').remove();
         
         // tiger.get('https://jsonplaceholder.typicode.com/users').then((res)=>{console.log(res);})
-        let response = await tiger.get('https://jsonplaceholder.typicode.com/users')
+        let response = await tiger.get('http://localhost:3000/users')
 
         let userData = response.data;
         console.log(userData);
@@ -192,7 +192,12 @@ function handler(e){
 
     let id = attr(article,'data-index').slice(5);
     
-    tiger.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    tiger.delete(`http://localhost:3000/users/${id}`).then(()=>{
+        userCardContainer.innerHTML = '';
+        rendingUserList_();
+    })
+
+
 }
 
 
