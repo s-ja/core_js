@@ -1,3 +1,5 @@
+import { insertLast } from "./insert.js";
+
 let userInfo = {
     id : 1,
     name : 'ASJ',
@@ -6,16 +8,25 @@ let userInfo = {
 }
 
 
-const createUserCard = (id,name,email,website) =>{
+const createUserCard = ({
+    id = '',
+    name = 'Blank',
+    email = 'blank',
+    website:site = 'blank'
+} = {}) =>{
+    
+    // console.log(user);
+    // const {id,name,email,website:site = 'blank'} = user
+    
     return /*html*/`
-    <article class="user-card" data-index="user-1">
+    <article class="user-card" data-index="user-${id}">
     <h3 class="user-name">${name}</h3>
     <div class="user-resouce-info">
       <div>
         <a class="user-email" href="mailto:${email}">${email}</a>
       </div>
       <div>
-        <a class="user-website" href="${website}" target="_blank" rel="noopener noreferer">${website}</a>
+        <a class="user-website" href="http://${site}" target="_blank" rel="noopener noreferer">${site}</a>
       </div>
     </div>
     <button class="delete">삭제</button>
@@ -25,9 +36,15 @@ const createUserCard = (id,name,email,website) =>{
 
 
 // console.log(createUserCard(1,'ASJ','tiger@euid','tiger.com'))
-console.log(createUserCard({
-    id : 1,
-    name : 'ASJ',
-    email : 'tiger@euid',
-    website : 'tiger.com'
-}))
+
+// console.log(createUserCard({
+//     id : 1,
+//     name : 'ASJ',
+//     email : 'tiger@euid',
+//     // website : 'tiger.com'
+// }))
+
+
+export const renderUserCard = (target,data)=>{
+    insertLast(target,createUserCard(data));
+}

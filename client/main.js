@@ -1,4 +1,8 @@
-import { insertLast, tiger, delayP } from "./lib/index.js";
+/* global gsap */
+
+// gsap.registerPlugin
+
+import { insertLast, tiger, delayP, getNode, renderUserCard } from "./lib/index.js";
 
 
 
@@ -93,6 +97,17 @@ import { insertLast, tiger, delayP } from "./lib/index.js";
 //? 생성된 카드로 렌더링
 
 
+
+
+//? 1. userList.js 로 간다
+//? 2. renderUserCard 함수를 만들기
+//? 3. 만들어진 함수 안에 createUserCard 를 던지고,
+//? 4. renderUserCard 함수를 사용했을 때 렌더링이 잘 될 수 있도록
+
+
+const userCardContainer = getNode('.user-card-inner')
+
+
 async function rendingUserList(){
 
     
@@ -112,5 +127,27 @@ async function rendingUserList_(){
     let userData = response.data;
     console.log(userData);
 
+    // console.log(createUserCard(userData))
+
+    // renderUserCard();
+
+    // insertLast(userCardContainer,createUserCard(userData));
+
+    userData.forEach(data=> renderUserCard(userCardContainer, data))
+    
+
+    // console.log(gsap.utils.toArray('.user-card'))
+
+    gsap.to(gsap.utils.toArray('.user-card'),
+    {
+        x:0,
+        opacity:1,
+        // rotation:360,
+        duration:1.5,
+        // stagger:{amount:3, from:'edges',},
+        stagger: 0.2
+    }
+    )
+    
 }
 rendingUserList_()
