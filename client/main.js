@@ -89,6 +89,8 @@ import { insertLast, tiger, delayP } from "./lib/index.js";
 //? function rendingUserList
 
 //? ajax get user list - https://jsonplaceholder.typicode.com/users
+//? 유저카드 생성
+//? 생성된 카드로 렌더링
 
 
 async function rendingUserList(){
