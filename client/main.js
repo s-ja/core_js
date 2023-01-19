@@ -2,7 +2,7 @@
 
 // gsap.registerPlugin
 
-import { insertLast, tiger, delayP, getNode, renderUserCard } from "./lib/index.js";
+import { insertLast, tiger, delayP, getNode, renderUserCard, changeColor, renderSpinner } from "./lib/index.js";
 
 
 
@@ -121,33 +121,45 @@ async function rendingUserList(){
 // console.log(tiger.get('https://jsonplaceholder.typicode.com/users'))
 
 async function rendingUserList_(){
-    // tiger.get('https://jsonplaceholder.typicode.com/users').then((res)=>{console.log(res);})
-    let response = await tiger.get('https://jsonplaceholder.typicode.com/users')
-
-    let userData = response.data;
-    console.log(userData);
-
-    // console.log(createUserCard(userData))
-
-    // renderUserCard();
-
-    // insertLast(userCardContainer,createUserCard(userData));
-
-    userData.forEach(data=> renderUserCard(userCardContainer, data))
     
+    renderSpinner(userCardContainer)
 
-    // console.log(gsap.utils.toArray('.user-card'))
+    try{
 
-    gsap.to(gsap.utils.toArray('.user-card'),
-    {
-        x:0,
-        opacity:1,
-        // rotation:360,
-        duration:1.5,
-        // stagger:{amount:3, from:'edges',},
-        stagger: 0.2
+        await delayP(2000)
+        
+        // tiger.get('https://jsonplaceholder.typicode.com/users').then((res)=>{console.log(res);})
+        let response = await tiger.get('https://jsonplaceholder.typicode.com/users')
+
+        let userData = response.data;
+        console.log(userData);
+        
+        // console.log(createUserCard(userData))
+        
+        // renderUserCard();
+        
+        // insertLast(userCardContainer,createUserCard(userData));
+        
+        userData.forEach(data=> renderUserCard(userCardContainer, data))
+        
+        
+        // console.log(gsap.utils.toArray('.user-card'))
+        
+        changeColor('.user-card')
+        
+        gsap.to(gsap.utils.toArray('.user-card'),
+        {
+            x:0,
+            opacity:1,
+            // rotation:360,
+            duration:1.5,
+            // stagger:{amount:3, from:'edges',},
+            stagger: 0.2,
+        }
+        )
+    }catch(err){
+        console.log(err);
     }
-    )
-    
+        
 }
 rendingUserList_()

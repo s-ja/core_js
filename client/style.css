@@ -31,7 +31,8 @@ h2{
   transform: translateX(-50%);
   min-width: 400px;
   z-index: 100;
-  background:white;
+  /* background:white; */
+  background:transparent;
 }
 
 .loadingSpinner svg{
